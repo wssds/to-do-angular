@@ -7,6 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule
     
   ],
   providers: [],

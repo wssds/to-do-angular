@@ -1,6 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+// https://angular.io/guide/attribute-binding#binding-to-the-class-attribute
 
-
+export interface ToDoItem {
+  
+  text:string;
+  isDone:boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -11,9 +16,11 @@ export class AppComponent {
   title = 'tallence';
   display=false;
 
-  @ViewChild('task') inputText: any;
+  
+  public newTask:string='';
+  
 
-  list:any[]=[];
+  list:ToDoItem[]=[];
 
 
   backgroundcolor="white";
@@ -22,29 +29,35 @@ export class AppComponent {
     this.display=!this.display;
   }
 
-  addTask(item:string){
-    if(item.length >= 1){
-      this.list.push({id:this.list.length,name:item})
+  addTask(){
+    if(this.newTask.length >= 1){
+      this.list.push({text:this.newTask, isDone:false})
     } else {
       alert('Deine Notiz muss mindestens 1 Zeichen enthalten');
     }
       
-    
+    this.newTask='';
     console.log(this.list);
 
-    this.inputText.nativeElement.value='';
-
   }
 
-  removeTask(id:number){
-    console.log(id);
-    this.list=this.list.filter(item=>item.id!==id);
+  removeTask(i:number){
+    this.list.splice(i, 1);
   }
 
-  doneTask(){
-    this.backgroundcolor="darkgrey";
+  doneTask(i:number){
+    this.list[i].isDone=!this.list[i].isDone;
+    // if(this.list[i].isDone=true){
+    //   this.list[i]['classList'].add('bgChange');
+    // }
+
+    console.log(this.list[i].isDone);
+  }
+
+  public getSortedList():ToDoItem[]{
+    return this.list; 
+    
   }
 
 }
-
 

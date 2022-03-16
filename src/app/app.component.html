@@ -15,9 +15,9 @@
     <div class="typeTask">
       <mat-card>
         <!-- id task -->
-          <input #task matInput placeholder="Aufgabe hinzufügen">
+          <input [(ngModel)]="newTask" matInput placeholder="Aufgabe hinzufügen">
           <!-- Aufgabe hinzufügen -->
-          <mat-icon (click)="addTask(task.value)">description</mat-icon>
+          <mat-icon (click)="addTask()">description</mat-icon>
       </mat-card>
     </div>
 
@@ -29,16 +29,27 @@
 </div>
 
 <div class="container"
-*ngFor="let item of list">
+*ngFor="let item of getSortedList(); let i = index">
   
-  <!--  -->
-  <mat-card [style.background-color]="backgroundcolor" class="manyTasks">
+  <!-- *ngIf="isDone", [list.i]="isDone" -->
+  <mat-card [class.bgChange]="item.isDone"  class="manyTasks">
      
     <!-- done button,  -->
-    <mat-icon (click)="doneTask()">done</mat-icon>
+    <mat-icon (click)="doneTask(i)">done</mat-icon>
 
-    <span>{{item.name}}</span>
+    <span>{{item.text}}</span>
   </mat-card>
 
-  <mat-icon (click)="removeTask(item.id)">delete_outline</mat-icon>
+  <mat-icon (click)="removeTask(i)">delete_outline</mat-icon>
 </div>
+
+
+
+<!-- <h2 style="text-align: center;">Erledigt</h2> -->
+
+<!-- <div class="container" *ngIf="isDone"
+*ngFor="let item of list; let i = index">
+
+
+
+</div> -->
