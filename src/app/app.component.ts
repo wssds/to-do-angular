@@ -21,9 +21,10 @@ export class AppComponent {
   
 
   list:ToDoItem[]=[];
+  newArr:any[]=[];
 
 
-  backgroundcolor="white";
+  // backgroundcolor="white";
   
   toggle(){
     this.display=!this.display;
@@ -45,19 +46,36 @@ export class AppComponent {
     this.list.splice(i, 1);
   }
 
+  removeNewArrTask(i:number){
+    this.newArr.splice(i, 1);
+  }
+
   doneTask(i:number){
-    this.list[i].isDone=!this.list[i].isDone;
+    this.newArr.push(this.list[i]);
+    console.log('new', this.newArr);
+    this.list.splice(i, 1);
+    // this.list[i].isDone=!this.list[i].isDone; Hintergrundfarbwechsel
+    
+    console.log(this.list[i].isDone);
     // if(this.list[i].isDone=true){
     //   this.list[i]['classList'].add('bgChange');
     // }
 
-    console.log(this.list[i].isDone);
+    
   }
 
   public getSortedList():ToDoItem[]{
-    return this.list; 
+    // false values first
+    return this.list = this.list.sort((a,b) => Number(a)-Number(b)); 
     
   }
+
+
+  backToDo(i:number){
+    this.list.unshift(this.newArr[i]);
+    this.newArr.splice(i, 1);
+  }
+
 
 }
 
