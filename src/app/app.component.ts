@@ -13,7 +13,7 @@ export interface ToDoItem {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tallence';
+  title = 'to do Angular';
   display=false;
 
   
