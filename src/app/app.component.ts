@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// https://angular.io/guide/attribute-binding#binding-to-the-class-attribute
+
 
 export interface ToDoItem {
   
@@ -21,10 +21,7 @@ export class AppComponent {
   
 
   list:ToDoItem[]=[];
-  newArr:any[]=[];
-
-
-  // backgroundcolor="white";
+  newArr:ToDoItem[]=[];
   
   toggle(){
     this.display=!this.display;
@@ -57,16 +54,7 @@ export class AppComponent {
     // this.list[i].isDone=!this.list[i].isDone; Hintergrundfarbwechsel
     
     console.log(this.list[i].isDone);
-    // if(this.list[i].isDone=true){
-    //   this.list[i]['classList'].add('bgChange');
-    // }
 
-    
-  }
-
-  public getSortedList():ToDoItem[]{
-    // false values first
-    return this.list = this.list.sort((a,b) => Number(a)-Number(b)); 
     
   }
 

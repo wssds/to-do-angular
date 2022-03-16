@@ -29,7 +29,7 @@
 </div>
 
 <div class="container"
-*ngFor="let item of getSortedList(); let i = index">
+*ngFor="let item of list; let i = index">
   
   <!-- *ngIf="isDone", [list.i]="isDone" -->
   <mat-card [class.bgChange]="item.isDone"  class="manyTasks">
@@ -50,12 +50,9 @@
 <div class="container"
 *ngFor="let doneItem of newArr; let i = index">
   
-  <!-- *ngIf="isDone", [list.i]="isDone" -->
-  <!-- [class.bgChange]="item.isDone" -->
   <mat-card [class.bgChange]="!doneItem.isDone" class="manyTasks">
      
     <!-- done button,  -->
-    <!--  disabled (click)="doneTask(i)" -->
     <mat-icon (click)="backToDo(i)">done</mat-icon>
 
     <span>{{doneItem.text}}</span>
